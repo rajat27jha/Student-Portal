@@ -1,0 +1,20 @@
+{# used for updating student info, this is the html page for that  #}
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    th{
+        width: 30%;
+    }
+</style>
+<form method="post" enctype="multipart/form-data">
+{#enctype is for encryption type#}
+    {% csrf_token %}
+{#    for info go stack overflow#}
+
+    <table>
+        {{ form.as_table }}
+{#        to show form just like it has given in models #}
+    </table>
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}
+Login
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center" style="font-family: 'Raleway', sans-serif;padding-top: 75px;" >
+        Member Login
+    </h1>
+</div>
+
+<div class="container">
+<div class="row d-flex justify-content-center">
+    {% if form.non_field_errors %}
+{#    {% for field in form %}#}
+{#        {% for error in field.errors %}#}
+{#            <div class="alert alert-danger">#}
+{#                <strong>{{ error|escape }}</strong>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    {% endfor %}#}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+    <div class="col-sm-6">
+        <form id="mylogin" method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+            <div class="form-group">
+                <label for="id_username">Username</label>
+                <input required class="form-control" type="text" name="username" id="id_username"  autofocus maxlength="254" >
+            </div>
+            <div class="form-group">
+                <label for="id_password">Password</label>
+                <input required type="password" name="password" id="id_password" class="form-control">
+            </div>
+            <div class="form-group d-flex justify-content-start">
+                <div>
+                    <button type="submit" class="btn btn-outline-info font-weight-bold"
+                    style="color: #117a8b;font-family: 'Raleway', sans-serif">
+                        Submit
+                    </button>
+                    <input type="hidden" name="next" value="/college/">
+                    <div class="mx-auto mt-2">
+                        <button class="btn btn-outline-info">
+                            <a style="color: #117a8b;font-weight: bold;font-family: 'Raleway', sans-serif;font-size: 16px;"
+                               href="/accounts/password/reset/">Forgot Password</a>
+                        </button>
+                    </div>
+                    <div class="mt-2">
+                        <button class="btn btn-outline-info">
+                            <a style="color: #117a8b;font-weight: bold;font-family: 'Raleway', sans-serif;font-size: 16px;"
+                                href="/accounts/register/">New user? Register here</a>
+                        </button>
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}

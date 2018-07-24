@@ -1,0 +1,166 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="row">
+    <div class="col-sm-8">
+    <div class="carousel slide" data-ride="carousel" id="car1">
+        <ul class="carousel-indicators">
+            <li data-target="#car1" data-slide-to="0" class="active"></li>
+            <li data-target="#car1" data-slide-to="1"></li>
+            <li data-target="#car1" data-slide-to="2"></li>
+        </ul>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="img-fluid" src="{% static 'images/banner1.jpg' %}" />
+                <div class="carousel-caption">
+                    <h1>All</h1>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="img-fluid" src="{% static 'images/banner2.jpg' %}" />
+                <div class="carousel-caption">
+                    <h1>In</h1>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="img-fluid" src="{% static 'images/banner3.jpg' %}" />
+                <div class="carousel-caption">
+                    <h1>One</h1>
+                </div>
+            </div>
+        </div>
+        <br>
+        <a href="#car1" data-slide="prev" class="carousel-control-prev"> <span
+                class="carousel-control-prev-icon"></span>
+        </a> <a href="#car1" data-slide="next" class="carousel-control-next"> <span
+            class="carousel-control-next-icon"></span>
+    </a>
+    </div>
+        </div>
+
+        <div class="col-sm-4">
+
+            <div class="row">
+
+                <div class="col-xs-6 mx-3">
+                <div class="card" style="height: 190px; width: 200px">
+                    <a href="{% url 'nlist' %}"><img class="card-img-top" src="{% static 'images/notice1.png' %}"></a>
+{#  <div class="card-body">#}
+{#    <h5 class="card-title">Card title</h5>#}
+{#    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>#}
+{#    <a href="#"></a>#}
+                </div>
+                </div>
+
+                <div class="col-xs-6">
+                    <div class="card" style="height: 190px; width: 200px;">
+                    <a href="{% url 'alist' %}"><img class="card-img-top" src="{% static 'images/assignment.png' %}"></a>
+                </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-xs-6 mx-3">
+                <div class="card" style="height: 190px; width: 200px">
+                    <a href="{% url 'rlist' %}"><img class="card-img-top" src="{% static 'images/result.jpg' %}"></a>
+                </div>
+                </div>
+
+                <div class="col-xs-6">
+                    <div class="card" style="height: 190px; width: 200px">
+                    <a href="{% url 'atlist' %}"><img class="card-img-top" src="{% static 'images/attendance.png' %}"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+{#                </div>#}
+{#                <div class="col-2">#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="row">#}
+{#                <div class="col-2">#}
+{##}
+{#                </div>#}
+{#                <div class="col-2">#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+</div>
+</div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <h2 class="text-center">Why?</h2>
+                </div>
+                <hr>
+                <div>
+                    <p class="text-justify">MyCollege is a single platform or
+                        a software that would help the stakeholders automate, manage,
+                        and monitor all their academic activities and optimize their academic workflow.
+                        Once the data is uploaded into this, faculties and management can do a lot of the
+                        tedious tasks they were doing with ease and comfort </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div>
+                    <h2 class="text-center">Pros</h2>
+                </div>
+                <hr>
+                <div>
+                    <ul>
+                        <li>No physical boundary</li>
+                        <li>Round the clock availability</li>
+                        <li>Multiple access.</li>
+                        <li>Information retrieval.</li>
+                        <li>Preservation and conservation.</li>
+                        <li>Space</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div>
+                    <h2 class="text-center">Cons</h2>
+                </div>
+                <hr>
+                <div>
+                    <ul>
+                        <li>User authentication for access to data</li>
+                        <li>Copyright</li>
+                        <li>Digital preservation.</li>
+                        <li>Equity of access </li>
+                        <li>Interoperability between systems and software</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-sm-4 d-flex justify-content-center">
+            <div>
+                <i class="fa-9x fas fa-universal-access"></i>
+                <h4 class="text-center">Easy To Access</h4>
+            </div>
+            </div>
+        <div class="col-sm-4 d-flex justify-content-center">
+            <div>
+                <i class="fas fa-9x fa-money-check-alt"></i>
+                <h4 class="text-center">Free Of Cost</h4>
+            </div>
+        </div>
+        <div class="col-sm-4 d-flex justify-content-center align-items-center">
+            <div>
+                <div class="d-flex justify-content-center">
+                    <i class="far fa-9x fa-clock"></i>
+                </div>
+                <h4 class="text-center">Accessible 24 X 7</h4>
+            </div>
+        </div>
+    </div>
+{% endblock %}

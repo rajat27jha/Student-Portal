@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1 class="myhead1">{{ object.subject }}</h1>
+<hr>
+<div class="row">
+    <div class="col-sm-10 offset-sm-1">
+    <table class="table table-striped">
+        <tr>
+            <th>Subject</th>
+            <td>{{ object.subject }}</td>
+        </tr>
+        <tr>
+            <th>Message</th>
+            <td>{{ object.message }}</td>
+        </tr>
+        <tr>
+            <th>Created Date</th>
+            <td>{{ object.cr_date }}</td>
+        </tr>
+        <tr>
+            <th>Due Date</th>
+            <td>{{ object.duedate }}</td>
+        </tr>
+        <tr>
+            <th>Branch</th>
+            <td>{{ object.branch }}</td>
+        </tr>
+        <tr>
+            <th>Attachment</th>
+            <td>
+                <a href="/media/{{ object.attachment1 }}">
+                {{ object.attachment1 }}
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <th>Sem</th>
+            <td>{{ object.sem }}</td>
+        </tr>
+    </table>
+    </div>
+</div>
+{% endblock %}

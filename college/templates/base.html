@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}MyCollegeEDRP{% endblock %}</title>
+<link href="{% static 'vender/bs/css/bootstrap.min.css'%}" rel="stylesheet" type="text/css" />
+<link href="{% static 'vender/fa/css/all.css'%}" rel="stylesheet" type="text/css" />
+<link href="{% static 'style.css'%}" rel="stylesheet" type="text/css" />
+<script src="{% static 'vender/jquery-3.3.1.min.js'%}"></script>
+<script src="{% static 'vender/popper.min.js'%}"></script>
+<script src="{% static 'vender/bs/js/bootstrap.min.js'%}"></script>
+<script>
+jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+     $('.nav-item .nav-link').each(function(){
+             var current = location.pathname;
+        console.log(current)
+        var $this = $(this);
+        // if the current path is like this link, make it active
+        if($this.attr('href').indexOf(current) !== -1){
+            $this.addClass('active');
+        }
+    });
+     $("#reg #id_username").on("input", function(){
+        $.get("/college/chkstu?name="+$(this).val(), function(data, status){
+            $("#err1").html(data);
+            ele = document.getElementById("regbtn");
+            if(data==null || data==""){
+                ele.disabled=false;
+            }
+            else {
+
+                ele.disabled=true;
+            }
+        });
+     });
+});
+</script>
+</head>
+<body background="{% static 'images/background1.jpg' %}">
+    <div class="head1"></div>
+    <div>
+        <nav class="navbar navbar-expand-sm">
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#n1" >
+                <i class="fas fa-2x fa-bars text-blue"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="n1">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item" ><a class="nav-link" id="rajat" href="{% url 'home' %}">Home</a></li>
+                    {% if user.is_authenticated and not user.is_superuser %}
+                        <li class="nav-item" ><a class="nav-link" id="rajat" href="{% url 'student_edit' student.id %}">Edit Profile</a></li>
+                    {% endif %}
+                    {% if user.is_superuser %}
+                        <li class="nav-item"><a class="nav-link" id="rajat" href="/admin">Admin</a></li>
+                    {% endif %}
+                    {%  if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" id="rajat" href="{% url 'student' %}">Student</a></li>
+                        <li class="nav-item"><a class="nav-link" id="rajat" href=" {% url 'auth_password_change' %}">Change Password</a></li>
+                        <li class="nav-item"><a class="nav-link" id="rajat" href="{% url 'auth_logout' %}">Logout</a></li>
+
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" id="rajat" href="/accounts/login/?next=/college/">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" id="rajat" href="/accounts/register/?next=/college/">Register</a></li>
+                    {% endif %}
+                    {% if user.is_authenticated and not user.is_superuser %}
+                        <li class="nav-item"><a class="nav-link" id="rajat" href="{% url 'feed' %}">Contact Us</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container-fluid my-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+
+    <div class="container-fluid footer pb-3 mb-3 mt-5 bg-dark">
+    <div class="row pt-3">
+        <div class="col-sm-4">
+            <img class="img-fluid head2" src="{% static 'images/Heading3.png' %}" alt="logo">
+        </div>
+        <div class="col-sm-4 d-flex justify-content-center">
+            <div>
+                <h4 class="text-center text-white" style="font-family: 'Raleway', sans-serif; ";>About MyCollege</h4>
+                <p style=" color: #117a8b; text-align: justify">An ERP when properly implemented into the institution addresses a whole range of issues from the grassroot level.
+                    It can automate most of the daily tasks, help the management to monitor academic and other peripheral activities,
+                    track institutional goals, and much more. ERP can save time and energy for every stakeholders the same time.
+                    It benefits the management, the students, and the faculties at the same time.</p>
+{#                <ul class="list-group">#}
+{#                    <li class="list-group-item bg-transparent borderless"><a class="link1" href="#">Support</a></li>#}
+{#                    <li class="list-group-item bg-transparent borderless"><a class="link1" href="#">Support</a></li>#}
+{#                    <li class="list-group-item bg-transparent borderless"><a class="link1" href="#">Support</a></li>#}
+{#                    <li class="list-group-item bg-transparent borderless"><a class="link1" href="#">Support</a></li>#}
+{#                </ul>#}
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <h4 class="text-center text-white" style="font-family: 'Raleway', sans-serif";>Follow MyCollege</h4>
+            <div class="d-flex justify-content-center mt-5">
+                <a class="pr-4 link1" href="#"><i class="fab fa-3x fa-facebook"></i></a>
+                <a class="pr-4 link1" href="#"><i class="fab fa-3x fa-twitter"></i></a>
+                <a class="pr-4 link2" href="#"><i class="fab fa-3x fa-youtube"></i></a>
+                <a class="pr-4 link2" href="#"><i class="fab fa-3x fa-google-plus"></i></a>
+                <a class="pr-4 link2" href="#"><i class="fab fa-3x fa-pinterest"></i></a>
+                <a class="pr-4 link3" href="#"><i class="fab fa-3x fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    <h5 class="text-center text-white">Copyright MyCollege.com</h5>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container-fluid py-5 bg-dark">
+    <div class="row">
+        <div class="col-sm-4">
+            <p class="text-white"><strong>Admin: </strong>Rajat Ranjan Jha</p>
+            <p class="text-white"><strong>Email: </strong>rajat27jha@gmail.com</p>
+            <p class="text-white"><strong>Phone: </strong>9302952503</p>
+            <p class="text-white"><strong>Motto: </strong>Knowledge gives us Intense Peace</p>
+        </div>
+        <div class="col-sm-8">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://maps.google.com/maps?q=geetanjali%20nagar%2Craipur%2Cchattisgarh&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    </div>
+<div class="container">
+<h4 class="text-center font-weight-bold mt-5" style="font-family: 'Raleway', sans-serif">
+    If you have any query or want to give us feedback, fill the form below
+</h4>
+<form method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+    <div class="row">
+        <div class="col-sm">
+            <div class="form-group required">
+                <label class="required font-weight-bold" for="id_name">Name</label>
+                <input required class="form-control required" type="text" name="name" id="id_name" maxlength="100" >
+            </div>
+            <div class="form-group required">
+                <label class="required font-weight-bold" for="id_email">E-mail</label>
+                <input required class="form-control required" type="email" name="email" id="id_email" maxlength="100" >
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold" for="id_mobno">Mobile Number</label>
+                <input required class="form-control required" type="number" name="mobno" id="id_mobno">
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold" for="id_subject">Subject</label>
+                <input required type="text" name="subject" id="id_subject" class="form-control required" maxlength="100">
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <label class="font-weight-bold" for="id_message">Your Message</label>
+{#                <input class="form-control required" type="text" name="message" id="id_message">#}
+                <textarea required class="form-control required" name="message" id="id_message" rows="12"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+</div>
+{% endblock %}
